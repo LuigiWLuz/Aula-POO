@@ -3,24 +3,24 @@ using namespace std;
 
 int main(void){
 
-  float lado1,lado2,lado3;
+  int angulo1,angulo2,angulo3;
 
   cout << "Insira respectivamente os tres lados do triangulo: ";
-  cin>>lado1>>lado2>>lado3;
-
-  if((lado1+lado2) > lado3 || (lado2+lado3) > lado1 || (lado1+lado3) > lado2){
-     if(lado1 == lado2 && lado2 == lado3){
-        cout << "Triangulo equilatero";
-     }
-     else if ((lado1 == lado2 && lado3 != lado1) || (lado1 == lado3 && lado2 != lado3)|| (lado2 == lado1 && lado2 != lado3) || (lado2 == lado3 && lado2 != lado1) ){
-        cout << "Triangulo Isosceles";
-     }
-     else{
-        cout << "Triangulo Escaleno";
-     }
+  cin>>angulo1>>angulo2>>angulo3;
 
 
-  }
+     if(angulo1 == 90 || angulo2 == 90 || angulo3 == 90){
+        cout << "Triangulo retangulo";
+     }
+     else if ( angulo1 >= 90 || angulo2 >= 90 || angulo3 >= 90){
+        cout << "Triangulo Obtusangulo";
+     }
+     else if ( angulo1 < 90 || angulo2 < 90 || angulo3 < 90){
+        cout << "Triangulo Acutangulo";
+     }
+
+
+
   else{
     cout << "Os valores informados nao formam um triangulo.";
   }
