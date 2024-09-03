@@ -22,6 +22,5 @@ int main(void){
   else if(media > 60)
     cout << "A turma eh idosa";
 
-
 }
 
