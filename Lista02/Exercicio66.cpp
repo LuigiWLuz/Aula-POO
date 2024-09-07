@@ -25,7 +25,7 @@ int main(void){
 
     cout << "Insira o valor do(s) produto(s): " << endl;
     while(toupper(opcao)!='N'){
-        cout << "+ Produto " << cont << ": ";
+        cout << "+ Produto " << cont << ": R$ ";
         cin >> Valorproduto;
 
         total+=Valorproduto;
@@ -34,7 +34,7 @@ int main(void){
         cout << "Deseja inserir mais um produto?(S/N) ";
         cin >> opcao;
         if(toupper(opcao) == 'N')
-            cout << "+ Produto " << cont << ": " << 0 << endl;
+            cout << "+ Produto " << cont << ": R$ " << setw(5)<<  0 << endl;
     }
 
     cout << "Qual foi o valor oferecido pelo cliente: ";
@@ -50,10 +50,13 @@ int main(void){
     else
         trocos = troco(valorRecebido,total);
 
+    cout << setprecision(2);
+    cout << setiosflags(ios::fixed);
+    cout << setiosflags(ios::right);
 
-    cout << "Total...: R$ " << total << endl;
-    cout << "Dinheiro: R$ " << valorRecebido << endl;
-    cout << "Troco...: R$ " << trocos << endl;
+    cout << "=  Total...: R$ " << setw(5)<<total << endl;
+    cout << "=> Dinheiro: R$ " << valorRecebido << endl;
+    cout << "-  Troco...: R$ " << setw(5)<< trocos << endl;
 
 
 
