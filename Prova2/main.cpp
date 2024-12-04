@@ -11,7 +11,7 @@ using namespace std;
 const char *appDir = GetApplicationDirectory();
 
 int main() {
-    InitWindow(800, 600, "Jogo com Itens");
+    InitWindow(800, 600, "Jogo com os Itens Adicionados");
     InitAudioDevice();
 
     float deltaTime;
@@ -22,9 +22,9 @@ int main() {
     for (int i = 0; i < 10; i++)
         enemies.emplace_back(make_unique<Enemy>());
 
-    vector<unique_ptr<items>> items;
+    vector<unique_ptr<items>> Items;
     for (int i = 0; i < 5; i++)
-        items.emplace_back(make_unique<items>());
+        Items.emplace_back(make_unique<items>());
 
     Music music = LoadMusicStream(TextFormat("%s/assets/music/music.mp3", appDir));
     PlayMusicStream(music);
@@ -37,7 +37,7 @@ int main() {
 
         player.Update(deltaTime);
         for (auto& enemy : enemies) enemy->Update(deltaTime);
-        items.erase(remove_if(items.begin(), items.end(),
+        items.erase(remove_if(Items.begin(), Items.end(),
             [&](const unique_ptr<items>& item) {
                 if (item->checkCollision(player)) {
                     score += item->getScoreValue();
@@ -45,7 +45,7 @@ int main() {
                 }
                 return false;
             }),
-            items.end()
+            Items.end()
         );
 
         enemies.erase(remove_if(enemies.begin(), enemies.end(),
@@ -64,7 +64,7 @@ int main() {
 
         player.Draw();
         for (const auto& enemy : enemies) enemy->Draw();
-        for (const auto& item : items) item->Draw();
+        for (const auto& item : Items) item->Draw();
 
         DrawText(TextFormat("Enemies: %d", Enemy::getEnemyCount()), GetScreenWidth() - 150, 20, 22, WHITE);
         DrawText(TextFormat("Health: %d %%", player.getHealth()), GetScreenWidth() - 150, 50, 22, WHITE);
