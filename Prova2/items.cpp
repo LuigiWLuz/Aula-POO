@@ -23,6 +23,8 @@ items::~items() {
 
 // Verifica se houve uma colisão
 bool items::checkCollision(const Player& player) const {
+    //por se tratar de uma saco de dinheiro que possui um formato mais redondo faz mais sentido utilizar 
+    // O CheckCollisionCircles que acaba sendo mais preciso para verificar se área do item sofreu uma colisão 
     return CheckCollisionCircles(
         {position.x + texture.width / 2.0f, position.y + texture.height / 2.0f},
         radius,
@@ -30,11 +32,11 @@ bool items::checkCollision(const Player& player) const {
         player.getRadius()
     );
 }
-
+//gera o saco de dinheiro da tela
 void items::Draw() const {
     DrawTexture(texture, position.x, position.y, RAYWHITE);
 }
-
-int Items::getValorItem() const {
+//metodo que retorna o valor do item 
+int items::getValorItem() const {
     return valorAocoletarItem;
 }
